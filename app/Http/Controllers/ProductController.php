@@ -102,7 +102,6 @@ class ProductController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Product deleted',
-            'data' => null
-        ], 204);
+        ]);
     }
 }
