@@ -50,6 +50,18 @@ class ProductController extends Controller
         ]);
     }
 
+        public function readAll()
+    {
+        $products = Product::all();
+
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'products' => $products
+            ]
+        ]);
+    }
+
     public function update(Request $request, $product_id)
     {
         $product = Product::find($product_id);
