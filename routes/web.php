@@ -25,7 +25,13 @@ $router->group(['prefix' => 'products'], function () use ($router) {
     $router->put('/{product_id}', 'ProductController@update');
     $router->delete('/{product_id}', 'ProductController@delete');
 });
-
+$router->group(['prefix' => 'storagetank'], function () use ($router) {
+    $router->post('/', 'StorageTankController@create');
+    $router->get('/{id_tangki_penyimpanan}', 'StorageTankController@read');
+    $router->get('/', 'StorageTankController@readAll');
+    $router->put('/{id_tangki_penyimpanan}', 'StorageTankController@update');
+    $router->delete('/{id_tangki_penyimpanan}', 'StorageTankController@delete');
+});
 $router->get('/sales[/{sales_id}]', 'SalesController@read');
 
 $router->get('/customers[/{customer_id}]', 'CustomerController@read');
