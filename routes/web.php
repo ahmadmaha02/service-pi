@@ -32,6 +32,14 @@ $router->group(['prefix' => 'storagetank'], function () use ($router) {
     $router->put('/{id_tangki_penyimpanan}', 'StorageTankController@update');
     $router->delete('/{id_tangki_penyimpanan}', 'StorageTankController@delete');
 });
+
+$router->group(['prefix' => 'kesehatan'], function () use ($router) {
+    $router->post('/', 'KesehatanController@create');
+    $router->get('/{id_kesehatan}', 'KesehatanController@read');
+    $router->get('/', 'KesehatanController@readAll');
+    $router->put('/{id_kesehatan}', 'KesehatanController@update');
+    $router->delete('/{id_kesehatan}', 'KesehatanController@delete');
+});
 $router->get('/sales[/{sales_id}]', 'SalesController@read');
 
 $router->get('/customers[/{customer_id}]', 'CustomerController@read');
