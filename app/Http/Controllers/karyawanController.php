@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\karyawan;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class KaryawanController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -19,25 +19,25 @@ class ProductController extends Controller
 
     public function create(Request $request)
     {
-        $product = Product::create($request->all());
+        $karyawan = karyawan::create($request->all());
 
         return response()->json([
             'success' => true,
-            'message' => 'New product created',
+            'message' => 'New Karyawan created',
             'data' => [
-                'product' => $product
+                'karyawan' => $karyawan
             ]
         ], 201);
     }
 
-    public function read($product_id)
+    public function read($id_tangki_penyimpanan)
     {
-        $product = Product::find($product_id);
+        $karyawan = karyawan::find($id_tangki_penyimpanan);
 
-        if (!$product) {
+        if (!$karyawan) {
             return response()->json([
                 'success' => false,
-                'message' => 'Product not found',
+                'message' => 'karyawan not found',
                 'data' => null
             ], 404);
         }
@@ -45,63 +45,64 @@ class ProductController extends Controller
         return response()->json([
             'success' => true,
             'data' => [
-                'product' => $product
+                'karyawan' => $karyawan
             ]
         ]);
     }
 
-        public function readAll()
+    public function readAll()
     {
-        $products = Product::all();
+        $karyawan = karyawan::all();
 
         return response()->json([
             'success' => true,
             'data' => [
-                'products' => $products
+                'karyawan' => $karyawan
             ]
         ]);
     }
 
-    public function update(Request $request, $product_id)
+    public function update(Request $request, $nip)
     {
-        $product = Product::find($product_id);
+        $karyawan = karyawan::find($nip);
 
-        if (!$product) {
+        if (!$karyawan) {
             return response()->json([
                 'success' => false,
-                'message' => 'Product not found',
+                'message' => 'karyawan not found',
                 'data' => null
             ], 404);
         }
 
-        $product->update($request->all());
+        $karyawan->update($request->all());
 
         return response()->json([
             'success' => true,
-            'message' => 'Product updated',
+            'message' => 'karyawan updated',
             'data' => [
-                'product' => $product
+                'karyawan' => $karyawan
             ]
         ]);
     }
 
-    public function delete($product_id)
+    public function delete($nip)
     {
-        $product = Product::find($product_id);
+        $karyawan = karyawan::find($nip);
 
-        if (!$product) {
+        if (!$karyawan) {
             return response()->json([
                 'success' => false,
-                'message' => 'Product not found',
+                'message' => 'karyawan not found',
                 'data' => null
             ], 404);
         }
 
-        $product->delete();
+        $karyawan->delete();
 
         return response()->json([
             'success' => true,
-            'message' => 'Product deleted',
-        ]);
+            'message' => 'karyawan',
+            'data' => null
+        ], 204);
     }
 }

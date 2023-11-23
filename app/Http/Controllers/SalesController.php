@@ -32,11 +32,6 @@ class SalesController extends Controller
                 'success' => true,
                 'data' => [
                     'sales' => $sales,
-                    'product' => [
-                        'name_product' => $sales->product->name_product,
-                        'unit_price' => $sales->product->unit_price,
-                        'total_price' => $sales->product->total_price,
-                    ],
                 ]
             ]);
         } else {

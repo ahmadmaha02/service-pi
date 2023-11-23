@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Workshop;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class WorkshopController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -19,25 +19,25 @@ class ProductController extends Controller
 
     public function create(Request $request)
     {
-        $product = Product::create($request->all());
+        $workshop = workshop::create($request->all());
 
         return response()->json([
             'success' => true,
-            'message' => 'New product created',
+            'message' => 'New workshop created',
             'data' => [
-                'product' => $product
+                'workshop' => $workshop
             ]
         ], 201);
     }
 
-    public function read($product_id)
+    public function read($id_workshop)
     {
-        $product = Product::find($product_id);
+        $workshop = workshop::find($id_workshop);
 
-        if (!$product) {
+        if (!$workshop) {
             return response()->json([
                 'success' => false,
-                'message' => 'Product not found',
+                'message' => 'workshop not found',
                 'data' => null
             ], 404);
         }
@@ -45,63 +45,64 @@ class ProductController extends Controller
         return response()->json([
             'success' => true,
             'data' => [
-                'product' => $product
+                'workshop' => $workshop
             ]
         ]);
     }
 
-        public function readAll()
+    public function readAll()
     {
-        $products = Product::all();
+        $workshop = workshop::all();
 
         return response()->json([
             'success' => true,
             'data' => [
-                'products' => $products
+                'workshop' => $workshop
             ]
         ]);
     }
 
-    public function update(Request $request, $product_id)
+    public function update(Request $request, $id_workshop)
     {
-        $product = Product::find($product_id);
+        $workshop = workshop::find($id_workshop);
 
-        if (!$product) {
+        if (!$workshop) {
             return response()->json([
                 'success' => false,
-                'message' => 'Product not found',
+                'message' => 'Workshop not found',
                 'data' => null
             ], 404);
         }
 
-        $product->update($request->all());
+        $workshop->update($request->all());
 
         return response()->json([
             'success' => true,
-            'message' => 'Product updated',
+            'message' => 'Workshop updated',
             'data' => [
-                'product' => $product
+                'workshop' => $workshop
             ]
         ]);
     }
 
-    public function delete($product_id)
+    public function delete($nip)
     {
-        $product = Product::find($product_id);
+        $workshop = workshop::find($nip);
 
-        if (!$product) {
+        if (!$workshop) {
             return response()->json([
                 'success' => false,
-                'message' => 'Product not found',
+                'message' => 'workshop not found',
                 'data' => null
             ], 404);
         }
 
-        $product->delete();
+        $workshop->delete();
 
         return response()->json([
             'success' => true,
-            'message' => 'Product deleted',
-        ]);
+            'message' => 'workshop',
+            'data' => null
+        ], 204);
     }
 }

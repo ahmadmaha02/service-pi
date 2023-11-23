@@ -18,6 +18,19 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$router->group(['prefix' => 'hukum'], function () use ($router) {
+    $router->post('/', 'PelaporanHukumController@createPelaporanHukum');
+    $router->get('/', 'PelaporanHukumController@getAllHukum');
+    $router->put('/{id_hukum}', 'PelaporanHukumController@update');
+    $router->delete('/{id_hukum}', 'PelaporanHukumController@deleteHukum');
+});
+
+$router->group(['prefix' => 'kontrak'], function () use ($router) {
+    $router->post('/', 'SuratMasukController@createSuratMasuk');
+    $router->get('/', 'SuratMasukController@getAllSurat');
+    $router->put('/{id_kontrak}', 'SuratMasukController@update');
+    $router->delete('/{id_kontrak}', 'SuratMasukController@deleteSurat');
+});
 $router->group(['prefix' => 'products'], function () use ($router) {
     $router->post('/', 'ProductController@create');
     $router->get('/{product_id}', 'ProductController@read');
@@ -40,6 +53,22 @@ $router->group(['prefix' => 'kesehatan'], function () use ($router) {
     $router->put('/{id_kesehatan}', 'KesehatanController@update');
     $router->delete('/{id_kesehatan}', 'KesehatanController@delete');
 });
+$router->group(['prefix' => 'karyawan'], function () use ($router) {
+    $router->post('/', 'karyawanController@create');
+    $router->get('/{nim}', 'karyawanController@read');
+    $router->get('/', 'karyawanController@readAll');
+    $router->put('/{nip}', 'karyawanController@update');
+    $router->delete('/{nip}', 'karyawanController@delete');
+});
+
+$router->group(['prefix' => 'workshop'], function () use ($router) {
+    $router->post('/', 'WorkshopController@create');
+    $router->get('/{id_workshop}', 'WorkshopController@read');
+    $router->get('/', 'WorkshopController@readAll');
+    $router->put('/{id_workshop}', 'WorkshopController@update');
+    $router->delete('/{id_workshop}', 'WorkshopController@delete');
+});
+
 $router->get('/sales[/{sales_id}]', 'SalesController@read');
 
 $router->get('/customers[/{customer_id}]', 'CustomerController@read');
