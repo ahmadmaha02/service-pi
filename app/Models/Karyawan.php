@@ -19,4 +19,16 @@ class Karyawan extends Model
     {
         return $this->hasOne('App\Models\EmployeeAccount', 'nip', 'nip');
     }
+    public function tasks()
+    {
+        return $this->hasMany('App\Models\Tasks', 'karyawan_nip', 'nip');
+    }
+    public function feeds()
+    {
+        return $this->hasMany('App\Models\Feeds', 'karyawan_nip', 'nip');
+    }
+    public function event()
+    {
+        return $this->hasMany('App\Models\Event', 'karyawan_nip', 'nip');
+    }
 }
