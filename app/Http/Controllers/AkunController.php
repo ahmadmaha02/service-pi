@@ -97,7 +97,8 @@ class AkunController extends Controller
         ]);
     }
 
-    public function deleteAkun(Request $request)
+
+    public function delete(Request $request)
     {
         $Akun = Akun::find($request->id_akun);
 
