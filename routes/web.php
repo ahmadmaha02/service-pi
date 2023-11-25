@@ -50,3 +50,73 @@ $router->get('/sales[/{sales_id}]', 'SalesController@read');
 $router->get('/customers[/{customer_id}]', 'CustomerController@read');
 
 $router->get('/employee-accounts', 'ControllerEmpAcc@read');
+
+
+// finance
+$router->group(['prefix' => 'akun'], function () use ($router) {
+    $router->get('/', 'AkunController@getAll');
+    $router->get('/{id_akun}', 'AkunController@getid');
+    $router->post('/', 'AkunController@create');
+    $router->put('/{id_akun}', 'AkunController@update');
+    $router->delete('/{id_akun}', 'AkunController@delete');
+});
+$router->group(['prefix' => 'kategori'], function () use ($router) {
+    $router->get('/', 'KategoriController@getAll');
+    $router->get('/{id_kategori}', 'KategoriController@getid');
+    $router->post('/', 'KategoriController@create');
+    $router->put('/{id_kategori}', 'KategoriController@update');
+    $router->delete('/{id_kategori}', 'KategoriController@delete');
+});
+$router->group(['prefix' => 'budget'], function () use ($router) {
+    $router->get('/', 'BudgetController@getAll');
+    $router->get('/{id_budget}', 'BudgetController@getid');
+    $router->post('/', 'BudgetController@create');
+    $router->put('/{id_budget}', 'BudgetController@update');
+    $router->delete('/{id_budget}', 'BudgetController@delete');
+});
+$router->group(['prefix' => 'income'], function () use ($router) {
+    $router->get('/', 'IncomeController@getAll');
+    $router->get('/{id_income}', 'IncomeController@getid');
+    $router->post('/', 'IncomeController@create');
+    $router->put('/{id_income}', 'IncomeController@update');
+    $router->delete('/{id_income}', 'IncomeController@delete');
+});
+$router->group(['prefix' => 'expense'], function () use ($router) {
+    $router->get('/', 'ExpenseController@getAll');
+    $router->get('/{id_expense}', 'ExpenseController@getid');
+    $router->post('/', 'ExpenseController@create');
+    $router->put('/{id_expense}', 'ExpenseController@update');
+    $router->delete('/{id_expense}', 'ExpenseController@delete');
+});
+
+
+
+// RnD
+$router->group(['prefix' => 'task'], function () use ($router) {
+    $router->get('/', 'TasksController@getAll');
+    $router->get('/{id_task}', 'TasksController@getid');
+    $router->post('/', 'TasksController@create');
+    $router->put('/{id_task}', 'TasksController@update');
+    $router->delete('/{id_task}', 'TasksController@delete');
+});
+$router->group(['prefix' => 'project'], function () use ($router) {
+    $router->get('/', 'ProjectsController@getAll');
+    $router->get('/{id_proj}', 'ProjectsController@getid');
+    $router->post('/', 'ProjectsController@create');
+    $router->put('/{id_proj}', 'ProjectsController@update');
+    $router->delete('/{id_proj}', 'ProjectsController@delete');
+});
+$router->group(['prefix' => 'event'], function () use ($router) {
+    $router->get('/', 'EventController@getAll');
+    $router->get('/{id_event}', 'EventController@getid');
+    $router->post('/', 'EventController@create');
+    $router->put('/{id_event}', 'EventController@update');
+    $router->delete('/{id_event}', 'EventController@delete');
+});
+$router->group(['prefix' => 'feed'], function () use ($router) {
+    $router->get('/', 'FeedsController@getAll');
+    $router->get('/{id_feed}', 'FeedsController@getid');
+    $router->post('/', 'FeedsController@create');
+    $router->put('/{id_feed}', 'FeedsController@update');
+    $router->delete('/{id_feed}', 'FeedsController@delete');
+});
