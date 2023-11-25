@@ -45,6 +45,30 @@ $router->group(['prefix' => 'storagetank'], function () use ($router) {
     $router->put('/{id_tangki_penyimpanan}', 'StorageTankController@update');
     $router->delete('/{id_tangki_penyimpanan}', 'StorageTankController@delete');
 });
+
+$router->group(['prefix' => 'kesehatan'], function () use ($router) {
+    $router->post('/', 'KesehatanController@create');
+    $router->get('/{id_kesehatan}', 'KesehatanController@read');
+    $router->get('/', 'KesehatanController@readAll');
+    $router->put('/{id_kesehatan}', 'KesehatanController@update');
+    $router->delete('/{id_kesehatan}', 'KesehatanController@delete');
+});
+$router->group(['prefix' => 'karyawan'], function () use ($router) {
+    $router->post('/', 'karyawanController@create');
+    $router->get('/{nim}', 'karyawanController@read');
+    $router->get('/', 'karyawanController@readAll');
+    $router->put('/{nip}', 'karyawanController@update');
+    $router->delete('/{nip}', 'karyawanController@delete');
+});
+
+$router->group(['prefix' => 'workshop'], function () use ($router) {
+    $router->post('/', 'WorkshopController@create');
+    $router->get('/{id_workshop}', 'WorkshopController@read');
+    $router->get('/', 'WorkshopController@readAll');
+    $router->put('/{id_workshop}', 'WorkshopController@update');
+    $router->delete('/{id_workshop}', 'WorkshopController@delete');
+});
+
 $router->get('/sales[/{sales_id}]', 'SalesController@read');
 
 $router->get('/customers[/{customer_id}]', 'CustomerController@read');
