@@ -55,7 +55,7 @@ $router->group(['prefix' => 'kesehatan'], function () use ($router) {
 });
 $router->group(['prefix' => 'karyawan'], function () use ($router) {
     $router->post('/', 'karyawanController@create');
-    $router->get('/{nim}', 'karyawanController@read');
+    $router->get('/{nip}', 'karyawanController@read');
     $router->get('/', 'karyawanController@readAll');
     $router->put('/{nip}', 'karyawanController@update');
     $router->delete('/{nip}', 'karyawanController@delete');

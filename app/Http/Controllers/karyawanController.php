@@ -30,9 +30,9 @@ class KaryawanController extends Controller
         ], 201);
     }
 
-    public function read($id_tangki_penyimpanan)
+    public function read($nip)
     {
-        $karyawan = karyawan::find($id_tangki_penyimpanan);
+        $karyawan = karyawan::find($nip);
 
         if (!$karyawan) {
             return response()->json([

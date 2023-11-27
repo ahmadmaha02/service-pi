@@ -85,9 +85,9 @@ class WorkshopController extends Controller
         ]);
     }
 
-    public function delete($nip)
+    public function delete($id_workshop)
     {
-        $workshop = workshop::find($nip);
+        $workshop = workshop::find($id_workshop);
 
         if (!$workshop) {
             return response()->json([
