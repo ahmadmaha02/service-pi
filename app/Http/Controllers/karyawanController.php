@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\karyawan;
+use App\Models\Karyawan;
 use Illuminate\Http\Request;
 
 class KaryawanController extends Controller
@@ -19,7 +19,7 @@ class KaryawanController extends Controller
 
     public function create(Request $request)
     {
-        $karyawan = karyawan::create($request->all());
+        $karyawan = Karyawan::create($request->all());
 
         return response()->json([
             'success' => true,
@@ -32,7 +32,7 @@ class KaryawanController extends Controller
 
     public function read($nip)
     {
-        $karyawan = karyawan::find($nip);
+        $karyawan = Karyawan::find($nip);
 
         if (!$karyawan) {
             return response()->json([
@@ -52,7 +52,7 @@ class KaryawanController extends Controller
 
     public function readAll()
     {
-        $karyawan = karyawan::all();
+        $karyawan = Karyawan::all();
 
         return response()->json([
             'success' => true,
@@ -64,7 +64,7 @@ class KaryawanController extends Controller
 
     public function update(Request $request, $nip)
     {
-        $karyawan = karyawan::find($nip);
+        $karyawan = Karyawan::find($nip);
 
         if (!$karyawan) {
             return response()->json([
@@ -87,7 +87,7 @@ class KaryawanController extends Controller
 
     public function delete($nip)
     {
-        $karyawan = karyawan::find($nip);
+        $karyawan = Karyawan::find($nip);
 
         if (!$karyawan) {
             return response()->json([
