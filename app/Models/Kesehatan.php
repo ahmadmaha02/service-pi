@@ -8,7 +8,7 @@ class Kesehatan extends Model
 {
     protected $table = 'kesehatan';
     protected $primaryKey = 'id_kesehatan';
-    public $timestamps = false;
+    public $timestamps = true;
     protected $fillable = [
         'nip', 'status_kesehatan', 'keterangan',
     ];
