@@ -10,11 +10,11 @@ class Kesehatan extends Model
     protected $primaryKey = 'id_kesehatan';
     public $timestamps = true;
     protected $fillable = [
-        'nip', 'status_kesehatan', 'keterangan',
+        'karyawan_nip', 'status_kesehatan', 'keterangan',
     ];
 
     public function karyawan()
     {
-        return $this->belongsTo('App\Models\Karyawan', 'nip', 'nip');
+        return $this->belongsTo('App\Models\Karyawan', 'karyawan_nip', 'nip');
     }
 }
