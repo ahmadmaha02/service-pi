@@ -31,6 +31,14 @@ $router->group(['prefix' => 'kontrak'], function () use ($router) {
     $router->put('/{id_kontrak}', 'SuratMasukController@update');
     $router->delete('/{id_kontrak}', 'SuratMasukController@deleteSurat');
 });
+
+$router->group(['prefix' => 'kontrakKeluar'], function () use ($router) {
+    $router->post('/', 'SuratKeluarController@createSuratKeluar');
+    $router->get('/', 'SuratKeluarController@getAllSurat');
+    $router->put('/{id_kontrak}', 'SuratKeluarController@update');
+    $router->delete('/{id_kontrak}', 'SuratKeluarController@deleteSurat');
+});
+
 $router->group(['prefix' => 'products'], function () use ($router) {
     $router->post('/', 'ProductController@create');
     $router->get('/{product_id}', 'ProductController@read');
