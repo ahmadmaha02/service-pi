@@ -112,23 +112,36 @@ $router->group(['prefix' => 'expense'], function () use ($router) {
     $router->put('/{id_expense}', 'ExpenseController@update');
     $router->delete('/{id_expense}', 'ExpenseController@delete');
 });
-
+$router->group(['prefix' => 'transaction'], function () use ($router) {
+    $router->get('/', 'TranHistoryController@getAll');
+    $router->get('/{id_account}', 'TranHistoryController@getid');
+    $router->post('/', 'TranHistoryController@create');
+    $router->put('/{id_account}', 'TranHistoryController@update');
+    $router->delete('/{id_account}', 'TranHistoryController@delete');
+});
+$router->group(['prefix' => 'balance'], function () use ($router) {
+    $router->post('/', 'BalanceController@create');
+    $router->get('/{account_number}', 'BalanceController@getid');
+    $router->get('/', 'BalanceController@getAll');
+    $router->put('/{account_number}', 'BalanceController@update');
+    $router->delete('/{account_number}', 'BalanceController@delete');
+});
 
 
 // RnD
 $router->group(['prefix' => 'task'], function () use ($router) {
     $router->get('/', 'TasksController@getAll');
-    $router->get('/{id_task}', 'TasksController@getid');
+    $router->get('/{id}', 'TasksController@getid');
     $router->post('/', 'TasksController@create');
-    $router->put('/{id_task}', 'TasksController@update');
-    $router->delete('/{id_task}', 'TasksController@delete');
+    $router->put('/{id}', 'TasksController@update');
+    $router->delete('/{id}', 'TasksController@delete');
 });
 $router->group(['prefix' => 'project'], function () use ($router) {
     $router->get('/', 'ProjectsController@getAll');
-    $router->get('/{id_proj}', 'ProjectsController@getid');
+    $router->get('/{id}', 'ProjectsController@getid');
     $router->post('/', 'ProjectsController@create');
-    $router->put('/{id_proj}', 'ProjectsController@update');
-    $router->delete('/{id_proj}', 'ProjectsController@delete');
+    $router->put('/{id}', 'ProjectsController@update');
+    $router->delete('/{id}', 'ProjectsController@delete');
 });
 $router->group(['prefix' => 'event'], function () use ($router) {
     $router->get('/', 'EventController@getAll');

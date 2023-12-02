@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Projects;
+use App\Models\Balance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
 
-class ProjectsController extends Controller
+class BalanceController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -22,21 +22,21 @@ class ProjectsController extends Controller
     //
     public function create(Request $request)
     {
-        $Projects = Projects::create($request->all());
+        $Balance = Balance::create($request->all());
 
         return response()->json([
             'success' => true,
             'message' => 'New Data created',
             'data' => [
-                'Projects' => $Projects
+                'Balance' => $Balance
             ]
         ]);
     }
 
     public function getAll()
     {
-        $Projects = Projects::all();
-        if (!$Projects) {
+        $Balance = Balance::all();
+        if (!$Balance) {
             return response()->json([
                 'success' => false,
                 'message' => 'Data not found',
@@ -49,17 +49,17 @@ class ProjectsController extends Controller
                 'success' => true,
                 'message' => 'All Data grabbed',
                 'data' => [
-                    'Projects' => $Projects
+                    'Balance' => $Balance
                 ]
             ]
         );
     }
 
-    public function getid($id)
+    public function getid($account_number)
     {
-        $Projects = Projects::find($id);
+        $Balance = Balance::find($account_number);
 
-        if (!$Projects) {
+        if (!$Balance) {
             return response()->json([
                 'success' => false,
                 'message' => 'storage not found',
@@ -70,16 +70,16 @@ class ProjectsController extends Controller
         return response()->json([
             'success' => true,
             'data' => [
-                'Projects' => $Projects
+                'Balance' => $Balance
             ]
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $account_number)
     {
-        $Projects = Projects::find($id);
+        $Balance = Balance::find($account_number);
 
-        if (!$Projects) {
+        if (!$Balance) {
             return response()->json([
                 'success' => false,
                 'message' => 'Data not found',
@@ -87,29 +87,29 @@ class ProjectsController extends Controller
             ], 404);
         }
 
-        $Projects->update($request->all());
+        $Balance->update($request->all());
 
         return response()->json([
             'success' => true,
             'message' => 'Data updated',
             'data' => [
-                'Projects' => $Projects
+                'Balance' => $Balance
             ]
         ]);
     }
 
     public function delete(Request $request)
     {
-        $Projects = Projects::find($request->id);
+        $Balance = Balance::find($request->account_number);
 
-        if (!$Projects) {
+        if (!$Balance) {
             return response()->json([
                 'success' => false,
                 'message' => 'Data not found',
             ], 404);
         }
 
-        $Projects->delete();
+        $Balance->delete();
 
         return response()->json([
             'success' => true,

@@ -22,7 +22,7 @@ class TasksController extends Controller
     //
     public function create(Request $request)
     {
-        $Tasks = Tasks::with('karyawan')->create($request->all());
+        $Tasks = Tasks::with(['karyawan','project'])->create($request->all());
 
         return response()->json([
             'success' => true,
@@ -35,7 +35,7 @@ class TasksController extends Controller
 
     public function getAll()
     {
-        $Tasks = Tasks::with('karyawan')->get();
+        $Tasks = Tasks::with(['karyawan','project'])->get();
         if (!$Tasks) {
             return response()->json([
                 'success' => false,
@@ -55,9 +55,9 @@ class TasksController extends Controller
         );
     }
 
-    public function getid($id_task)
+    public function getid($id)
     {
-        $Tasks = Tasks::with('karyawan')->find($id_task);
+        $Tasks = Tasks::with(['karyawan','project'])->find($id);
 
         if (!$Tasks) {
             return response()->json([
@@ -75,9 +75,9 @@ class TasksController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id_task)
+    public function update(Request $request, $id)
     {
-        $Tasks = Tasks::with('karyawan')->find($id_task);
+        $Tasks = Tasks::with(['karyawan','project'])->find($id);
 
         if (!$Tasks) {
             return response()->json([
@@ -100,7 +100,7 @@ class TasksController extends Controller
 
     public function delete(Request $request)
     {
-        $Tasks = Tasks::find($request->id_task);
+        $Tasks = Tasks::find($request->id);
 
         if (!$Tasks) {
             return response()->json([
