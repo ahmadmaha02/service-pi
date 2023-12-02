@@ -81,7 +81,11 @@ $router->get('/sales[/{sales_id}]', 'SalesController@read');
 
 $router->get('/customers[/{customer_id}]', 'CustomerController@read');
 
-$router->get('/employee-accounts', 'ControllerEmpAcc@read');
+$router->group(['prefix' => 'employee-accounts'], function () use ($router) {
+    $router->get('/', 'ControllerEmpAcc@read');
+    $router->post('/', 'ControllerEmpAcc@create');
+    $router->get('/{karyawan_nip}', 'ControllerEmpAcc@read');
+});
 
 
 // finance
