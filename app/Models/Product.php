@@ -11,7 +11,7 @@ class Product extends Model
     protected $primaryKey = 'product_id';
 
     protected $fillable = [
-        'name_product', 'stock', 'unit_price', 'total_price', 'last_update', 'sales_id',
+        'name_product', 'stock', 'product_cost', 'unit_price', 'total_price', 'last_update', 'sales_id',
     ];
 
     public function sales()
