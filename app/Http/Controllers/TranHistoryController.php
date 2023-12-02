@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Projects;
+use App\Models\TranHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
 
-class ProjectsController extends Controller
+class TranHistoryController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -22,21 +22,21 @@ class ProjectsController extends Controller
     //
     public function create(Request $request)
     {
-        $Projects = Projects::create($request->all());
+        $TranHistory = TranHistory::create($request->all());
 
         return response()->json([
             'success' => true,
-            'message' => 'New Data created',
+            'message' => 'New Kategori created',
             'data' => [
-                'Projects' => $Projects
+                'TranHistory' => $TranHistory
             ]
         ]);
     }
 
     public function getAll()
     {
-        $Projects = Projects::all();
-        if (!$Projects) {
+        $TranHistory = TranHistory::all();
+        if (!$TranHistory) {
             return response()->json([
                 'success' => false,
                 'message' => 'Data not found',
@@ -49,17 +49,17 @@ class ProjectsController extends Controller
                 'success' => true,
                 'message' => 'All Data grabbed',
                 'data' => [
-                    'Projects' => $Projects
+                    'TranHistory' => $TranHistory
                 ]
             ]
         );
     }
 
-    public function getid($id)
+    public function getid($id_account)
     {
-        $Projects = Projects::find($id);
+        $TranHistory = TranHistory::find($id_account);
 
-        if (!$Projects) {
+        if (!$TranHistory) {
             return response()->json([
                 'success' => false,
                 'message' => 'storage not found',
@@ -70,16 +70,16 @@ class ProjectsController extends Controller
         return response()->json([
             'success' => true,
             'data' => [
-                'Projects' => $Projects
+                'TranHistory' => $TranHistory
             ]
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_account)
     {
-        $Projects = Projects::find($id);
+        $TranHistory = TranHistory::find($id_account);
 
-        if (!$Projects) {
+        if (!$TranHistory) {
             return response()->json([
                 'success' => false,
                 'message' => 'Data not found',
@@ -87,29 +87,29 @@ class ProjectsController extends Controller
             ], 404);
         }
 
-        $Projects->update($request->all());
+        $TranHistory->update($request->all());
 
         return response()->json([
             'success' => true,
             'message' => 'Data updated',
             'data' => [
-                'Projects' => $Projects
+                'TranHistory' => $TranHistory
             ]
         ]);
     }
 
     public function delete(Request $request)
     {
-        $Projects = Projects::find($request->id);
+        $TranHistory = TranHistory::find($request->id_account);
 
-        if (!$Projects) {
+        if (!$TranHistory) {
             return response()->json([
                 'success' => false,
                 'message' => 'Data not found',
             ], 404);
         }
 
-        $Projects->delete();
+        $TranHistory->delete();
 
         return response()->json([
             'success' => true,
